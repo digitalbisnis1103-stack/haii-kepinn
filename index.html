@@ -1,0 +1,2917 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width,
+             initial-scale=1.0,
+             maximum-scale=1.0,
+             user-scalable=no">
+
+<title>haii kepinn...</title>
+
+
+<!-- GOOGLE FONT -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Parisienne&display=swap"
+    rel="stylesheet">
+
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+}
+
+body{
+
+    background:#000;
+
+    color:#fff;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    overflow:hidden;
+
+}
+
+
+/* =========================================================
+   MAIN APP
+========================================================= */
+
+.app{
+
+    position:relative;
+
+    width:100%;
+
+    height:100dvh;
+
+    overflow:hidden;
+
+    background:#4b0000;
+
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:#4b0000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transform:translateX(35px);
+
+    transition:
+        opacity .55s ease,
+        transform .55s ease,
+        visibility .55s ease;
+
+}
+
+
+.page.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+
+    transform:translateX(0);
+
+}
+
+
+/* =========================================================
+   GENERAL CONTENT
+========================================================= */
+
+.content{
+
+    width:min(900px,92%);
+
+    height:100%;
+
+    padding:
+        30px 20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+}
+
+
+/* =========================================================
+   SCRIPT FONT
+========================================================= */
+
+.title,
+.letter-title,
+.choice-title,
+.yay-title,
+.promise-title,
+.final-title{
+
+    font-family:
+        "Parisienne",
+        cursive;
+
+    font-weight:400;
+
+    color:#fff;
+
+}
+
+
+/* =========================================================
+   PAGE 1
+========================================================= */
+
+#page1 .content{
+
+    padding-top:10px;
+
+}
+
+
+#page1 .title{
+
+    font-size:
+        clamp(55px,8vw,100px);
+
+    line-height:1.02;
+
+    margin-bottom:27px;
+
+}
+
+
+#page1 .subtitle{
+
+    width:min(600px,90%);
+
+    font-size:
+        clamp(16px,2vw,21px);
+
+    line-height:1.5;
+
+    color:#fff;
+
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.btn{
+
+    border:none;
+
+    outline:none;
+
+    min-width:102px;
+
+    padding:
+        11px 28px;
+
+    margin-top:30px;
+
+    border-radius:999px;
+
+    background:#ffc1c7;
+
+    color:#431010;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.btn:hover{
+
+    transform:
+        translateY(-2px)
+        scale(1.02);
+
+    box-shadow:
+        0 8px 20px
+        rgba(255,190,200,.2);
+
+}
+
+
+.btn:active{
+
+    transform:scale(.95);
+
+}
+
+
+.btn.small{
+
+    margin-top:10px;
+
+    padding:
+        9px 19px;
+
+    font-size:15px;
+
+}
+
+
+/* =========================================================
+   MUSIC CONTROL
+========================================================= */
+
+.music-control{
+
+    position:fixed;
+
+    right:15px;
+
+    top:15px;
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+        rgba(0,0,0,.28);
+
+    color:#fff;
+
+    font-size:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:9999;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(8px);
+
+    transition:.3s;
+
+}
+
+
+.music-control.playing{
+
+    box-shadow:
+        0 0 20px
+        rgba(255,190,200,.4);
+
+}
+
+
+/* =========================================================
+   FLOATING HEART
+========================================================= */
+
+.heart{
+
+    position:fixed;
+
+    bottom:-30px;
+
+    left:0;
+
+    color:#ffb8c1;
+
+    pointer-events:none;
+
+    z-index:50;
+
+    opacity:.75;
+
+    animation:
+        heartFloat
+        linear
+        forwards;
+
+}
+
+
+@keyframes heartFloat{
+
+    0%{
+
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    15%{
+
+        opacity:.7;
+
+    }
+
+    100%{
+
+        transform:
+            translateY(-110vh)
+            translateX(var(--move))
+            rotate(360deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================================================
+   PAGE 2
+   ENVELOPE
+========================================================= */
+
+#page2 .content{
+
+    justify-content:center;
+
+    padding-top:0;
+
+}
+
+
+.envelope-wrap{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+.envelope{
+
+    position:relative;
+
+    width:
+        min(330px,76vw);
+
+    aspect-ratio:
+        1.55 / 1;
+
+    cursor:pointer;
+
+    margin-bottom:25px;
+
+    filter:
+        drop-shadow(
+            0 12px 20px
+            rgba(0,0,0,.25)
+        );
+
+    transition:
+        transform .3s ease;
+
+}
+
+
+.envelope:hover{
+
+    transform:
+        translateY(-4px);
+
+}
+
+
+/* =========================================================
+   ENVELOPE BODY
+========================================================= */
+
+.envelope-body{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#62423f;
+
+    overflow:hidden;
+
+}
+
+
+/* =========================================================
+   ENVELOPE FOLDS
+========================================================= */
+
+.envelope-body::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            38deg,
+            transparent 49.2%,
+            rgba(38,15,15,.30) 50%,
+            transparent 50.8%
+        );
+
+}
+
+
+.envelope-body::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            -38deg,
+            transparent 49.2%,
+            rgba(38,15,15,.30) 50%,
+            transparent 50.8%
+        );
+
+}
+
+
+/* =========================================================
+   ENVELOPE FLAP
+========================================================= */
+
+.envelope-flap{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:68%;
+
+    background:#704a46;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    transform-origin:
+        top center;
+
+    transition:
+        transform .8s
+        cubic-bezier(.2,.7,.2,1);
+
+    z-index:5;
+
+}
+
+
+/* =========================================================
+   OPEN ENVELOPE
+========================================================= */
+
+.envelope.open .envelope-flap{
+
+    transform:
+        rotateX(180deg);
+
+}
+
+
+/* =========================================================
+   PAGE 2 BUTTONS
+========================================================= */
+
+#page2 .btn{
+
+    margin-top:0;
+
+    display:block;
+
+}
+
+
+#page2 .btn:first-of-type{
+
+    min-width:102px;
+
+    margin-bottom:14px;
+
+}
+
+
+#page2 .btn.small{
+
+    min-width:140px;
+
+    margin-top:0;
+
+    padding:
+        9px 20px;
+
+    font-size:15px;
+
+}
+
+
+/* =========================================================
+   PAGE 3
+   LETTER
+========================================================= */
+
+#page3{
+
+    align-items:flex-start;
+
+    justify-content:flex-start;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+
+#page3 .letter-container{
+
+    width:min(620px,90%);
+
+    min-height:100%;
+
+    margin:0 auto;
+
+    padding:
+        55px 0 80px;
+
+    text-align:left;
+
+}
+
+
+/* =========================================================
+   LETTER TITLE
+========================================================= */
+
+#page3 .letter-title{
+
+    text-align:center;
+
+    font-size:
+        clamp(52px,8vw,78px);
+
+    line-height:1;
+
+    margin-bottom:28px;
+
+}
+
+
+/* =========================================================
+   MUSIC CARD
+========================================================= */
+
+.music-card{
+
+    width:
+        min(300px,82%);
+
+    margin:
+        0 auto 40px;
+
+    padding:
+        7px 9px;
+
+    border-radius:7px;
+
+    background:#b11938;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+
+.music-cover{
+
+    width:48px;
+
+    height:48px;
+
+    flex-shrink:0;
+
+    border-radius:5px;
+
+    background:#f6dddd;
+
+    color:#9c1834;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:20px;
+
+}
+
+
+.music-info{
+
+    flex:1;
+
+    min-width:0;
+
+    text-align:left;
+
+}
+
+
+.music-info strong{
+
+    display:block;
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+
+.music-info span{
+
+    display:block;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    opacity:.75;
+
+}
+
+
+.music-play{
+
+    width:27px;
+
+    height:27px;
+
+    flex-shrink:0;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    color:#a51835;
+
+    cursor:pointer;
+
+    font-size:10px;
+
+}
+
+
+/* =========================================================
+   LETTER TEXT
+========================================================= */
+
+.letter-text{
+
+    width:
+        min(480px,100%);
+
+    margin:auto;
+
+    color:#fff;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+}
+
+
+.letter-text p{
+
+    margin-bottom:23px;
+
+}
+
+
+.signature{
+
+    margin-top:28px;
+
+}
+
+
+#page3 .btn{
+
+    margin-top:35px;
+
+}
+
+
+/* =========================================================
+   PAGE 4
+========================================================= */
+
+.choice-title{
+
+    font-size:
+        clamp(48px,8vw,80px);
+
+    line-height:1;
+
+    margin-bottom:15px;
+
+}
+
+
+#page4 .subtitle{
+
+    font-size:18px;
+
+    margin-bottom:5px;
+
+}
+
+
+.choice-box{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+
+/* =========================================================
+   PAGE 5
+========================================================= */
+
+.message-text{
+
+    font-family:
+        "Parisienne",
+        cursive;
+
+    font-size:
+        clamp(55px,9vw,90px);
+
+}
+
+
+.sticker{
+
+    width:
+        min(280px,65vw);
+
+    height:260px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:10px 0;
+
+}
+
+
+.sticker img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+
+/* =========================================================
+   PAGE 6
+========================================================= */
+
+.yay-title{
+
+    font-size:
+        clamp(55px,9vw,85px);
+
+    line-height:1;
+
+    margin-bottom:10px;
+
+}
+
+
+#page6 .sticker{
+
+    width:
+        min(270px,65vw);
+
+    height:250px;
+
+}
+
+
+/* =========================================================
+   PAGE 7
+========================================================= */
+
+#page7 .content{
+
+    justify-content:center;
+
+}
+
+
+.promise-title{
+
+    width:100%;
+
+    font-size:
+        clamp(42px,6.5vw,70px);
+
+    line-height:1.08;
+
+    text-align:center;
+
+    margin-bottom:42px;
+
+}
+
+
+.promise-content{
+
+    width:
+        min(650px,90%);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:25px;
+
+    margin-bottom:25px;
+
+}
+
+
+.promise-sticker{
+
+    width:230px;
+
+    height:190px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+.promise-sticker img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+
+.promise-text{
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(25px,4vw,38px);
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+}
+
+
+#page7 .btn{
+
+    margin-top:8px;
+
+}
+
+
+/* =========================================================
+   PAGE 8
+========================================================= */
+
+#page8 .content{
+
+    justify-content:center;
+
+}
+
+
+.final-title{
+
+    width:100%;
+
+    font-size:
+        clamp(42px,7vw,68px);
+
+    line-height:1.08;
+
+    text-align:center;
+
+    margin-bottom:5px;
+
+}
+
+
+.final-sticker{
+
+    width:300px;
+
+    height:250px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-left:70px;
+
+}
+
+
+.final-sticker img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+
+.final-love{
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(27px,4vw,40px);
+
+    font-weight:600;
+
+    margin-top:-100px;
+
+    margin-right:210px;
+
+}
+
+
+#page8 .btn{
+
+    margin-top:65px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+
+    .page{
+
+        min-height:100dvh;
+
+    }
+
+
+    .content{
+
+        width:100%;
+
+        padding:
+            20px 16px;
+
+    }
+
+
+    /* =========================================
+       PAGE 1
+    ========================================= */
+
+    #page1 .title{
+
+        font-size:54px;
+
+        margin-bottom:22px;
+
+    }
+
+
+    #page1 .subtitle{
+
+        width:90%;
+
+        font-size:16px;
+
+        line-height:1.5;
+
+    }
+
+
+    /* =========================================
+       BUTTON
+    ========================================= */
+
+    .btn{
+
+        padding:
+            11px 27px;
+
+        font-size:16px;
+
+    }
+
+
+    /* =========================================
+       ENVELOPE
+    ========================================= */
+
+    .envelope{
+
+        width:76vw;
+
+        max-width:310px;
+
+        margin-bottom:27px;
+
+    }
+
+
+    #page2 .btn:first-of-type{
+
+        margin-bottom:14px;
+
+        padding:
+            11px 28px;
+
+        font-size:16px;
+
+    }
+
+
+    #page2 .btn.small{
+
+        min-width:140px;
+
+        padding:
+            9px 18px;
+
+        font-size:14px;
+
+    }
+
+
+    /* =========================================
+       LETTER
+    ========================================= */
+
+    #page3 .letter-container{
+
+        width:88%;
+
+        padding:
+            48px 0 70px;
+
+    }
+
+
+    #page3 .letter-title{
+
+        font-size:52px;
+
+        margin-bottom:25px;
+
+    }
+
+
+    .music-card{
+
+        width:290px;
+
+        margin-bottom:35px;
+
+    }
+
+
+    .letter-text{
+
+        width:100%;
+
+        font-size:16px;
+
+        line-height:1.7;
+
+    }
+
+
+    /* =========================================
+       CHOICE
+    ========================================= */
+
+    .choice-title{
+
+        font-size:50px;
+
+    }
+
+
+    /* =========================================
+       YAY
+    ========================================= */
+
+    .yay-title{
+
+        font-size:58px;
+
+    }
+
+
+    /* =========================================
+       PROMISE
+    ========================================= */
+
+    .promise-title{
+
+        font-size:43px;
+
+        margin-bottom:25px;
+
+    }
+
+
+    .promise-content{
+
+        width:100%;
+
+        flex-direction:row;
+
+        gap:4px;
+
+    }
+
+
+    .promise-sticker{
+
+        width:52vw;
+
+        height:180px;
+
+    }
+
+
+    .promise-text{
+
+        width:42%;
+
+        white-space:normal;
+
+        text-align:left;
+
+        font-size:25px;
+
+    }
+
+
+    /* =========================================
+       FINAL
+    ========================================= */
+
+    .final-title{
+
+        font-size:43px;
+
+        margin-bottom:5px;
+
+    }
+
+
+    .final-sticker{
+
+        width:270px;
+
+        height:230px;
+
+        margin-left:65px;
+
+    }
+
+
+    .final-love{
+
+        font-size:27px;
+
+        margin-top:-70px;
+
+        margin-right:155px;
+
+    }
+
+
+    #page8 .btn{
+
+        margin-top:55px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media(max-width:380px){
+
+
+    #page1 .title{
+
+        font-size:48px;
+
+    }
+
+
+    .envelope{
+
+        width:72vw;
+
+    }
+
+
+    #page3 .letter-title{
+
+        font-size:48px;
+
+    }
+
+
+    .promise-title{
+
+        font-size:37px;
+
+    }
+
+
+    .promise-sticker{
+
+        width:49vw;
+
+        height:160px;
+
+    }
+
+
+    .promise-text{
+
+        font-size:22px;
+
+    }
+
+
+    .final-title{
+
+        font-size:38px;
+
+    }
+
+
+    .final-sticker{
+
+        width:240px;
+
+        margin-left:50px;
+
+    }
+
+
+    .final-love{
+
+        font-size:24px;
+
+        margin-right:125px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+#page3::-webkit-scrollbar{
+
+    width:4px;
+
+}
+
+
+#page3::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+
+#page3::-webkit-scrollbar-thumb{
+
+    background:
+        rgba(255,255,255,.25);
+
+    border-radius:20px;
+
+}
+
+/* =====================================================
+   PAGE 8 — FINAL
+===================================================== */
+
+#page8 .content{
+    position:relative;
+    justify-content:center;
+    overflow:hidden;
+}
+
+
+/* =========================
+   JUDUL
+========================= */
+
+.final-title{
+
+    width:100%;
+
+    font-size:
+        clamp(42px,7vw,68px);
+
+    line-height:1.08;
+
+    text-align:center;
+
+    margin-bottom:5px;
+
+}
+
+
+/* =========================
+   STICKER
+========================= */
+
+.final-sticker{
+
+    position:absolute;
+
+    width:300px;
+
+    height:250px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    /*
+       STICKER DIGESER JAUH KE KANAN
+    */
+    right:12%;
+
+    top:47%;
+
+    margin:0;
+
+    z-index:2;
+
+}
+
+
+.final-sticker img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+
+/* =========================
+   LOVE TEXT
+========================= */
+
+.final-love{
+
+    position:absolute;
+
+    left:15%;
+
+    top:58%;
+
+    margin:0;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(27px,4vw,40px);
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+    z-index:5;
+
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+#page8 .btn{
+
+    position:absolute;
+
+    bottom:45px;
+
+    margin:0;
+
+    z-index:10;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    .final-title{
+
+        font-size:43px;
+
+        line-height:1.1;
+
+        margin-bottom:0;
+
+    }
+
+
+    /* sticker lebih kanan */
+
+    .final-sticker{
+
+        width:245px;
+
+        height:220px;
+
+        right:-15px;
+
+        top:43%;
+
+    }
+
+
+    /* tulisan tetap di kiri */
+
+    .final-love{
+
+        left:8%;
+
+        top:61%;
+
+        font-size:27px;
+
+    }
+
+
+    #page8 .btn{
+
+        bottom:35px;
+
+    }
+
+}
+
+
+/* =====================================================
+   HP KECIL
+===================================================== */
+
+@media(max-width:380px){
+
+    .final-title{
+
+        font-size:38px;
+
+    }
+
+
+    .final-sticker{
+
+        width:220px;
+
+        height:200px;
+
+        right:-12px;
+
+        top:44%;
+
+    }
+
+
+    .final-love{
+
+        left:7%;
+
+        top:61%;
+
+        font-size:24px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     AUDIO
+===================================================== -->
+
+<audio
+    id="bgMusic"
+    src="music.mp3"
+    loop
+    preload="auto">
+</audio>
+
+
+<!-- MUSIC BUTTON -->
+
+<button
+    class="music-control"
+    id="musicButton"
+    aria-label="Music">
+
+    ♪
+
+</button>
+
+
+
+<!-- =====================================================
+     APP
+===================================================== -->
+
+<main class="app">
+
+
+<!-- =====================================================
+     PAGE 1
+===================================================== -->
+
+<section
+    class="page active"
+    id="page1">
+
+
+    <div class="content">
+
+
+        <h1 class="title">
+
+            I'm Sorry, Kepin...
+
+        </h1>
+
+
+        <p class="subtitle">
+
+            A space to clear the air,
+            share my heart, and bridge the gap
+            between us.
+
+        </p>
+
+
+        <button
+            class="btn"
+            onclick="startExperience()">
+
+            Start
+
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 2 — ENVELOPE
+===================================================== -->
+
+<section
+    class="page"
+    id="page2">
+
+
+    <div class="content">
+
+
+        <div class="envelope-wrap">
+
+
+            <!-- ENVELOPE -->
+
+            <div
+                class="envelope"
+                id="envelope"
+                onclick="openEnvelope()">
+
+
+                <div class="envelope-body"></div>
+
+                <div class="envelope-flap"></div>
+
+
+            </div>
+
+
+            <!-- READ -->
+
+            <button
+                class="btn"
+                onclick="openLetter()">
+
+                Read
+
+            </button>
+
+
+            <!-- NEED MORE TIME -->
+
+            <button
+                class="btn small"
+                onclick="goTo(3)">
+
+                I need more time
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 3 — LETTER
+===================================================== -->
+
+<section
+    class="page"
+    id="page3">
+
+
+    <div class="letter-container">
+
+
+        <h1 class="letter-title">
+
+            I'm Sorry, Love...
+
+        </h1>
+
+
+        <!-- MUSIC CARD -->
+
+        <div class="music-card">
+
+
+            <div class="music-cover">
+
+                ♫
+
+            </div>
+
+
+            <div class="music-info">
+
+                <strong>
+
+                    I Love You I'm Sorry
+
+                </strong>
+
+
+                <span>
+
+                    A little song for us ♡
+
+                </span>
+
+
+            </div>
+
+
+            <button
+                class="music-play"
+                id="smallMusicButton"
+                onclick="toggleMusic()">
+
+                ▶
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- LETTER -->
+
+        <div class="letter-text">
+
+
+          <div class="letter-text">
+
+    <p>
+        haii kepinnn, akuu mintaa maafff yaaa tentang semuaa
+        yangg akuu ketikk kee kamuu dann kamuu rasa sakit hatii,
+        akuu tauu akuu salahh bangett akuu mauu mintaa maafff.
+    </p>
+
+    <p>
+        akuu gatauu sekarang perasaan kamuu ke aku kaya gimana,
+        kaloo kamuu nannnya perasaan akuu ke kamuu kaya gimana??
+        akuu bakal jawab perasaan aku ke kamuu masii kayaa
+        kemarin kemarinnn.
+    </p>
+
+    <p>
+        akuu buat inii untuk kamuu, akuu mauu mintaa maaaff
+        bangettt. akuu tauu kaloo akuu cuman sekedar ngetik
+        minta maaf ke kamuu doangg kamuu belum puass kann??
+    </p>
+
+    <p>
+        akuu gatauu kamuu uda puas atau belum kalo cara minta
+        maaf aku ke kamu dengan cara kaya ginii.
+    </p>
+
+    <p>
+        akuu tauu kesalahan akuuu. pertama akuu najisinn kamuuu,
+        akuu gaa bermaksudd buatt najisin kamuu, sumpahh.
+    </p>
+
+    <p>
+        akuu sama temen akuu kebiasaan nyaa kayaa gituuu,
+        sumpah demi allah kayaa dikit dikit
+        "apaansi lu najis" gituuu.
+    </p>
+
+    <p>
+        makanya kemrin akuu reflekss bangett.
+        sumpahh akuu jugaa duluu gamauu kokk di najisin gituuu,
+        tapii seiring berjalan nya waktu akuu disinii mulaii tauu
+        kaloo pergaulan disini emng waww bisaa ngebawa akuu
+        ke arus yang salaah.
+    </p>
+
+    <p>
+        auraa disini banyakk negativ nyaa.
+        dluu akuu juga jarang banget ngomong kasar,
+        tapii semenjak disini akuu setiap jam ada aja
+        omongan kasar yang keluar dari mulut akuu.
+    </p>
+
+    <p>
+        akuu gatau kenapa aku bisa kayagini kepinn,
+        akuu gatauuu.
+    </p>
+
+    <p>
+        yangg keduaa akuu tauu kamuu kesell jugaa yaa
+        karnaaa asbunn akuu yang bilang
+        "kita sampai sini aja ya".
+    </p>
+
+    <p>
+        sumpahh akuu disituu cuman ngomongg doaaangg,
+        akuu gaa ada maksud apapunn.
+    </p>
+
+    <p>
+        ituu akuu udaa ceritain kamu ke temen kamar aku,
+        aku uda ceritain kamu ke temen kelas akuu.
+    </p>
+
+    <p>
+        sampe mreka kalo pinjem ipad aku
+        (kalo aku mau tidur dikelas),
+        pass aku bangun akuu tanya
+        "kepin ada bales cet aku ga".
+    </p>
+
+    <p>
+        kata mereka "ada", trss mreka lngsung kembali in
+        ipadd akuu buat aku bales cet kamu.
+    </p>
+
+    <p>
+        atauu gaa kaloo bublee cet kamuu banyakk
+        mreka lsngung banguniin aku trs langsung
+        aku bales cet kamuu.
+    </p>
+
+    <p>
+        tauu gaa sii tadii akuu mauu badminton,
+        trss gara gara sesuai absen jadi akuu sama
+        temen cwo kelas aku kann.
+    </p>
+
+    <p>
+        trss aku bilang "mr gamau mister",
+        trs kata mister "ntr kmu g ada nilai".
+    </p>
+
+    <p>
+        trss aku bingung kan, "trs temen temen aku bilang
+        "mister dia uda ada cwo mister namanya kepin".
+    </p>
+
+    <p>
+        DEMI ALLAH trs aku bilang
+        "nahh iyh mister aku gabisa sama dia".
+    </p>
+
+    <p>
+        trss jdinya akuu sama misternyaa.
+        pasti kamuu mikir kenapa aku sama cwo,
+        karna aku absen pertama dan dia absen ke 2.
+        ini lagi pengambilan nilai.
+    </p>
+
+    <p>
+        maaafinnn akuu yaa kalo akuu seringg bikin kamuuu
+        kesell atauu marahh atau sering bikin kamuu baddmoodd.
+    </p>
+
+    <p>
+        akuu lagii memahamin kamuu disinii,
+        karna cwoo disini 100 persen bedaa.
+    </p>
+
+    <p>
+        dridluu aku dapet cwo yang toxic bangettt,
+        jadii aku kadang ikut ceplas ceplos jugaaa.
+    </p>
+
+    <p>
+        akuu mintaaa maaf yaaa.
+    </p>
+
+    <p>
+        akuu bersumpah akuu gaada niatan buatt ngeakhirin ini
+        atas kemauan akuuu kecualii kamu yang mauu
+        atau kamuu yang ada perasaan buat cwe lain.
+    </p>
+
+    <p>
+        kalo aalasan nya ituu akuu gaa bisa apaa apaa.
+    </p>
+
+    <p>
+        inii bukannn omongan buaya atau ulaar yangg seringg
+        kanuu dengeerr tapii ini benerann dari daleemm
+        hatii akuuu.
+    </p>
+
+    <p>
+        akuu gabisaaa kamuu kayaa cueekk kee akuu kaya giniii,
+        pasti kamu ngerasa kamuu gaa dryy cuman akuu
+        ngerasaa kamuu dryy meskipun kmuu gaa dryyy.
+    </p>
+
+    <p>
+        gatauu kenapa, akuuu jujur ya akuu nyamannn
+        samaa kamuu.
+    </p>
+
+    <p>
+        akuu gaa adaa niat buruk apapun ituuu.
+    </p>
+
+    <p>
+        akuuu sukaa sikapp kamui yang kayaa kemarin,
+        kaya bener bener type cwoo yangg akuu maksuddd.
+    </p>
+
+    <p>
+        akuu sukaa cwoo kayaa kamuuu.
+    </p>
+
+    <p>
+        akuu gatauu kepustusan kamuu apaaa setelah kamuu
+        liatt long tekss akuu.
+    </p>
+
+    <p>
+        (akuu terimaa keputusan kamuu).
+    </p>
+
+    <p>
+        maaaafinnn akuuu yaaaaa 💗🤍
+    </p>
+
+    <p class="signature">
+
+        dari aku yang bener-bener minta maaf  💗🤍
+
+    </p>
+
+</div>
+
+
+        </div>
+
+
+
+        <div
+            style="
+                width:100%;
+                text-align:center;
+            ">
+
+
+            <button
+                class="btn"
+                onclick="goTo(4)">
+
+                Continue
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 4
+===================================================== -->
+
+<section
+    class="page"
+    id="page4">
+
+
+    <div class="content">
+
+
+        <h1 class="choice-title">
+
+            Take your time...
+
+        </h1>
+
+
+        <p class="subtitle">
+
+            You don't have to answer right now.
+
+        </p>
+
+
+        <div class="choice-box">
+
+
+            <button
+                class="btn"
+                onclick="goTo(5)">
+
+                I forgive you
+
+            </button>
+
+
+            <button
+                class="btn small"
+                onclick="goTo(6)">
+
+                I need more time
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 5
+===================================================== -->
+
+<section
+    class="page"
+    id="page5">
+
+
+    <div class="content">
+
+
+        <h1 class="message-text">
+
+            Yey... ♡
+
+        </h1>
+
+
+        <div class="sticker">
+
+
+            <img
+                src="stiker1.webp"
+                alt="Sticker">
+
+
+        </div>
+
+
+        <button
+            class="btn"
+            onclick="goTo(7)">
+
+            Continue
+
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 6
+===================================================== -->
+
+<section
+    class="page"
+    id="page6">
+
+
+    <div class="content">
+
+
+        <h1 class="yay-title">
+
+            Yuuuuyyy!!!
+
+        </h1>
+
+
+        <div class="sticker">
+
+
+            <img
+                src="stiker2.webp"
+                alt="Sticker">
+
+
+        </div>
+
+
+        <button
+            class="btn"
+            onclick="goTo(7)">
+
+            Continue
+
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 7 — PROMISE
+===================================================== -->
+
+<section
+    class="page"
+    id="page7">
+
+
+    <div class="content">
+
+
+        <h1 class="promise-title">
+
+            I Promise that this<br>
+            won't happen again!
+
+        </h1>
+
+
+        <div class="promise-content">
+
+
+            <div class="promise-sticker">
+
+
+                <img
+                    src="stiker3.webp"
+                    alt="Sticker">
+
+
+            </div>
+
+
+            <div class="promise-text">
+
+                I Love You, Kepin!
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="btn"
+            onclick="goTo(8)">
+
+            Back
+
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 8 — FINAL
+===================================================== -->
+
+<section
+    class="page"
+    id="page8">
+
+
+    <div class="content">
+
+
+        <h1 class="final-title">
+
+            Take all the time you need<br>
+            to process, kepin.
+
+        </h1>
+
+
+        <div class="final-sticker">
+
+
+            <img
+                src="stiker4.webp"
+                alt="Sticker">
+
+
+        </div>
+
+
+        <div class="final-love">
+
+            I Love You
+
+        </div>
+
+
+        <button
+            class="btn"
+            onclick="goTo(1)">
+
+            Back
+
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+const pages =
+    document.querySelectorAll(".page");
+
+
+const music =
+    document.getElementById("bgMusic");
+
+
+const musicButton =
+    document.getElementById("musicButton");
+
+
+const smallMusicButton =
+    document.getElementById(
+        "smallMusicButton"
+    );
+
+
+const envelope =
+    document.getElementById(
+        "envelope"
+    );
+
+
+let currentPage = 1;
+
+
+let musicStarted = false;
+
+
+
+/* =========================================================
+   GO TO PAGE
+========================================================= */
+
+function goTo(number){
+
+    pages.forEach(page => {
+
+        page.classList.remove(
+            "active"
+        );
+
+    });
+
+
+    const target =
+        document.getElementById(
+            "page" + number
+        );
+
+
+    if(!target){
+
+        return;
+
+    }
+
+
+    target.classList.add(
+        "active"
+    );
+
+
+    currentPage = number;
+
+
+    /* reset scroll surat */
+
+    if(number === 3){
+
+        setTimeout(() => {
+
+            target.scrollTop = 0;
+
+        },100);
+
+    }
+
+
+    createHearts();
+
+}
+
+
+
+/* =========================================================
+   START EXPERIENCE
+========================================================= */
+
+function startExperience(){
+
+    startMusic();
+
+    goTo(2);
+
+}
+
+
+
+/* =========================================================
+   START MUSIC
+========================================================= */
+
+function startMusic(){
+
+    music.volume = .65;
+
+
+    const promise =
+        music.play();
+
+
+    if(
+        promise !== undefined
+    ){
+
+        promise
+
+        .then(() => {
+
+            musicStarted = true;
+
+
+            musicButton.classList.add(
+                "playing"
+            );
+
+
+            musicButton.innerHTML =
+                "♫";
+
+
+            if(
+                smallMusicButton
+            ){
+
+                smallMusicButton.innerHTML =
+                    "Ⅱ";
+
+            }
+
+        })
+
+
+        .catch(() => {
+
+            /*
+              Browser mungkin
+              memblokir autoplay.
+              Musik akan mulai
+              setelah user menyentuh
+              halaman.
+            */
+
+        });
+
+    }
+
+}
+
+
+
+/* =========================================================
+   TOGGLE MUSIC
+========================================================= */
+
+function toggleMusic(){
+
+    if(
+        music.paused
+    ){
+
+        music.play()
+
+        .then(() => {
+
+            musicStarted = true;
+
+
+            musicButton.classList.add(
+                "playing"
+            );
+
+
+            musicButton.innerHTML =
+                "♫";
+
+
+            if(
+                smallMusicButton
+            ){
+
+                smallMusicButton.innerHTML =
+                    "Ⅱ";
+
+            }
+
+        })
+
+        .catch(() => {});
+
+
+    }
+
+    else{
+
+        music.pause();
+
+
+        musicButton.classList.remove(
+            "playing"
+        );
+
+
+        musicButton.innerHTML =
+            "♪";
+
+
+        if(
+            smallMusicButton
+        ){
+
+            smallMusicButton.innerHTML =
+                "▶";
+
+        }
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+musicButton.addEventListener(
+    "click",
+    toggleMusic
+);
+
+
+
+/* =========================================================
+   OPEN ENVELOPE
+========================================================= */
+
+function openEnvelope(){
+
+    envelope.classList.toggle(
+        "open"
+    );
+
+
+    startMusic();
+
+}
+
+
+
+/* =========================================================
+   READ
+========================================================= */
+
+function openLetter(){
+
+    startMusic();
+
+
+    envelope.classList.add(
+        "open"
+    );
+
+
+    setTimeout(() => {
+
+        goTo(3);
+
+    },450);
+
+}
+
+
+
+/* =========================================================
+   AUTOPLAY ATTEMPT
+========================================================= */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(() => {
+
+            startMusic();
+
+        },700);
+
+    }
+);
+
+
+
+/* =========================================================
+   FIRST TOUCH
+========================================================= */
+
+document.addEventListener(
+    "pointerdown",
+    () => {
+
+        if(
+            !musicStarted
+        ){
+
+            startMusic();
+
+        }
+
+    },
+    {
+        once:true
+    }
+);
+
+
+
+/* =========================================================
+   CREATE HEART
+========================================================= */
+
+function createHeart(){
+
+    const heart =
+        document.createElement(
+            "div"
+        );
+
+
+    heart.className =
+        "heart";
+
+
+    const symbols = [
+
+        "♡",
+        "♥",
+        "❤",
+        "♡",
+        "✦"
+
+    ];
+
+
+    heart.innerHTML =
+        symbols[
+            Math.floor(
+                Math.random()
+                *
+                symbols.length
+            )
+        ];
+
+
+    heart.style.left =
+        Math.random() * 100 +
+        "vw";
+
+
+    heart.style.fontSize =
+        (
+            12 +
+            Math.random() * 15
+        ) + "px";
+
+
+    heart.style.animationDuration =
+        (
+            5 +
+            Math.random() * 5
+        ) + "s";
+
+
+    heart.style.setProperty(
+        "--move",
+        (
+            Math.random() * 160 -
+            80
+        ) + "px"
+    );
+
+
+    document.body.appendChild(
+        heart
+    );
+
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    },10000);
+
+}
+
+
+
+/* =========================================================
+   HEART BURST
+========================================================= */
+
+function createHearts(){
+
+    for(
+        let i = 0;
+        i < 7;
+        i++
+    ){
+
+        setTimeout(
+            createHeart,
+            i * 170
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CONTINUOUS HEART
+========================================================= */
+
+setInterval(
+    () => {
+
+        if(
+            currentPage !== 3
+        ){
+
+            createHeart();
+
+        }
+
+    },
+    2000
+);
+
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+
+        if(
+            event.key ===
+            "ArrowRight"
+        ){
+
+            if(
+                currentPage < 8
+            ){
+
+                goTo(
+                    currentPage + 1
+                );
+
+            }
+
+        }
+
+
+        if(
+            event.key ===
+            "ArrowLeft"
+        ){
+
+            if(
+                currentPage > 1
+            ){
+
+                goTo(
+                    currentPage - 1
+                );
+
+            }
+
+        }
+
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
